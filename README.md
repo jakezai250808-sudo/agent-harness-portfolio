@@ -1,35 +1,34 @@
 # Agent Harness Portfolio
 
-This repository is a public-facing portfolio for Agent Harness and Agent Runtime Infra work.
+这个仓库用于沉淀 Agent Harness / Agent Runtime Infra 方向的公开作品集、博客和面试证据。
 
-It is built around three tracks:
+核心围绕三条线：
 
-1. **Agent Harness**: multi-agent task ownership, memory/history preflight, subagent role split, evidence-based reporting, PASS/BLOCK gates, and failure recovery.
-2. **Agent Runtime Infra**: control plane, Host/Carrier, Key/Route, Record/Bind, Runtime Ready, secret handles, gateway/MCP routing, readback, rollback, and orphan cleanup.
-3. **Interview Evidence**: failure cases, benchmarks, architecture notes, and weekly writing that turn real engineering work into clear interview stories.
+1. **Agent Harness**：多 Agent 任务 ownership、memory/history preflight、subagent 分工、证据化汇报、PASS/BLOCK gate、失败恢复。
+2. **Agent Runtime Infra**：control plane、Host/Carrier、Key/Route、Record/Bind、Runtime Ready、secret handle、gateway/MCP 路由、readback、rollback、orphan cleanup。
+3. **Interview Evidence**：failure case、benchmark、架构笔记、每周文章，把真实工程经历转成面试可表达材料。
 
 ## Projects
 
 - [mini-multi-agent-harness](projects/mini-multi-agent-harness/README.md)
 - [agent-sandbox-control-plane](projects/agent-sandbox-control-plane/README.md)
 
-## Writing
+## Blog
 
-The blog is published with GitHub Pages from this repository.
+博客通过 GitHub Pages 发布。
 
-First article:
+第一篇文章：
 
-- [2026-07-09: From Cloud Agent Teams to Agent Harness / Infra](./_posts/2026-07-09-cloud-agent-teams-to-agent-harness-infra.md)
+- [2026-07-09: 从 Cloud Agent Teams 到 Agent Harness / Infra](./_posts/2026-07-09-cloud-agent-teams-to-agent-harness-infra.md)
 
 ## Operating Principle
 
-The goal is not to show a chatbot demo. The goal is to show how agents can reliably work in real engineering workflows:
+目标不是展示一个 chatbot demo，而是展示 Agent 如何在真实工程流程里可靠工作：
 
-- read the right context before acting;
-- claim and own tasks;
-- use tools with explicit boundaries;
-- report evidence instead of vibes;
-- separate CI pass, review pass, contract pass, and real runtime smoke;
-- recover from stale context and failed handoffs;
-- clean up resources and prove orphan count is zero.
-
+- 行动前读取正确上下文；
+- 先 claim 再执行；
+- 有明确工具和权限边界；
+- 用证据汇报，而不是靠感觉；
+- 区分 CI pass、review pass、contract pass 和 real runtime smoke；
+- 能从 stale context 和失败 handoff 中恢复；
+- 能清理资源并证明 orphan count 为 0。

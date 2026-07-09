@@ -3,11 +3,10 @@ layout: home
 title: Agent Harness Portfolio
 ---
 
-This site documents an Agent Harness / Agent Runtime Infra portfolio built from real multi-agent engineering work.
+这里记录一个从真实多 Agent 工程协作中沉淀出来的 Agent Harness / Agent Runtime Infra 作品集。
 
-Start here:
+先看这几部分：
 
-- [From Cloud Agent Teams to Agent Harness / Infra]({% post_url 2026-07-09-cloud-agent-teams-to-agent-harness-infra %})
+- [从 Cloud Agent Teams 到 Agent Harness / Infra]({{ site.baseurl }}{% post_url 2026-07-09-cloud-agent-teams-to-agent-harness-infra %})
 - [mini-multi-agent-harness](projects/mini-multi-agent-harness/)
 - [agent-sandbox-control-plane](projects/agent-sandbox-control-plane/)
-

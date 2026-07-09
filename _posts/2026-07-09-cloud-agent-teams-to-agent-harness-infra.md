@@ -1,50 +1,50 @@
 ---
 layout: post
-title: "From Cloud Agent Teams to Agent Harness / Infra"
+title: "从 Cloud Agent Teams 到 Agent Harness / Infra"
 date: 2026-07-09
 categories: [agent-harness, agent-infra, portfolio]
 ---
 
-Today I started turning the Cloud Agent Teams work into a public Agent Harness / Agent Runtime Infra portfolio.
+今天开始把 Cloud Agent Teams 里的真实工作，整理成一个公开的 Agent Harness / Agent Runtime Infra 作品集。
 
-The key realization is simple: making agents useful is not just about prompting a model. A real agent system needs governance, runtime infrastructure, evidence, recovery, and a way to prove that work actually happened.
+核心判断很简单：让 Agent 真正有用，不只是写 prompt 或接一个模型 API。一个真实 Agent 系统需要治理机制、运行时基础设施、证据链、恢复能力，以及证明“事情真的完成了”的方法。
 
-## The Problem
+## 问题
 
-Most agent demos stop at a happy path:
+大多数 Agent demo 停在 happy path：
 
-1. a user gives a task;
-2. an agent calls a tool;
-3. the demo shows a successful output.
+1. 用户给一个任务；
+2. Agent 调用一个工具；
+3. demo 展示一个成功输出。
 
-That is not enough for engineering work.
+这对真实工程工作远远不够。
 
-In a real team, agents need to handle long-running tasks, changing context, incomplete handoffs, review gates, secrets, runtime state, failed deployments, and cleanup. They also need to explain what is covered and what is not covered.
+在真实团队里，Agent 要处理长任务、变化的上下文、不完整交接、review gate、secret、runtime state、失败部署和资源清理。它还必须说清楚：哪些已经覆盖，哪些没有覆盖。
 
-This is where Agent Harness and Agent Runtime Infra meet.
+这就是 Agent Harness 和 Agent Runtime Infra 的交叉点。
 
-## Harness Layer
+## Harness 层
 
-The Harness layer is about agent behavior and coordination.
+Harness 层解决的是 Agent 行为和协作问题。
 
-In Cloud Agent Teams, the most important mechanisms are:
+在 Cloud Agent Teams 里，最重要的机制包括：
 
-- task ownership and claim-before-work;
-- thread-level execution context;
-- memory/history preflight before reporting;
-- subagent role split;
-- PASS/BLOCK review language;
-- fresh readback instead of stale assumptions;
-- explicit boundaries for what was not tested;
-- owner-facing summaries that can be checked.
+- task ownership 和 claim-before-work；
+- thread-level execution context；
+- 汇报前做 memory/history preflight；
+- subagent role split；
+- PASS/BLOCK review language；
+- 用 fresh readback 替代 stale assumption；
+- 明确说明哪些没有测试；
+- 面向 owner 的可核查 summary。
 
-This is different from a normal chat wrapper. The hard part is not producing text. The hard part is making agents behave like reliable teammates across long workflows.
+这和普通 chat wrapper 不一样。难点不是生成文本，而是让 Agent 在长流程里像可靠队友一样工作。
 
-## Runtime Infra Layer
+## Runtime Infra 层
 
-The Runtime Infra layer is about making agents actually run.
+Runtime Infra 层解决的是 Agent 如何真实跑起来。
 
-The useful decomposition is:
+我现在采用的拆分方式是：
 
 - Host / Carrier;
 - Key / Route;
@@ -55,86 +55,85 @@ The useful decomposition is:
 - rollback;
 - orphan cleanup.
 
-For an agent creation workflow, "created" should not mean a row exists in a database. It should mean the agent is visible, has the correct runtime binding, can use the expected model route, can be stopped and started, can be deleted, and leaves no orphaned resources.
+对于 create agent 流程，“created” 不应该只是数据库里有一行记录。它应该意味着：Agent 可见，有正确 runtime binding，能使用预期 model route，能 stop/start，能 delete，最后没有 orphan resource。
 
-That is why create -> visible -> delete -> orphan=0 is a stronger standard than a green unit test.
+所以 `create -> visible -> delete -> orphan=0` 比单元测试绿更接近真实验收。
 
-## Why This Matters for Interviews
+## 为什么这对面试有价值
 
-For Agent Harness roles, the story is:
+如果面 Agent Harness 岗位，核心表达是：
 
-> I work on making agents reliable in multi-step engineering workflows: context preflight, task ownership, subagent coordination, evidence-based reporting, review gates, and failure recovery.
+> 我做的是让 Agent 在多步骤工程任务里可靠工作：context preflight、task ownership、subagent coordination、evidence-based reporting、review gate、failure recovery。
 
-For Agent Infra roles, the story is:
+如果面 Agent Infra 岗位，核心表达是：
 
-> I work on the control plane and runtime path that lets agents run safely: carrier, route, secret handle, lifecycle, readback, rollback, and cleanup.
+> 我做的是让 Agent 安全运行的 control plane 和 runtime path：carrier、route、secret handle、lifecycle、readback、rollback、cleanup。
 
-The strongest position is the intersection:
+最强的位置是两者交叉：
 
-> I understand both how agents should behave and what infrastructure they need in order to work reliably.
+> 我既懂 Agent 应该如何协作，也懂它要可靠运行需要什么基础设施。
 
-## What I Will Build Publicly
+## 接下来公开构建什么
 
-This portfolio will grow through two public projects.
+这个作品集先通过两个公开项目增长。
 
 ### mini-multi-agent-harness
 
-A minimal harness that demonstrates:
+最小 Agent Harness demo，展示：
 
-- planner / executor / reviewer roles;
-- memory preflight;
-- task ownership;
-- tool call logs;
-- PASS/BLOCK reports;
-- fake-green detection;
-- recovery after stale context.
+- planner / executor / reviewer roles；
+- memory preflight；
+- task ownership；
+- tool call logs；
+- PASS/BLOCK reports；
+- fake-green detection；
+- stale context 之后的恢复。
 
 ### agent-sandbox-control-plane
 
-A minimal control-plane demo that demonstrates:
+最小 Agent Runtime Control Plane demo，展示：
 
-- create / readback / stop / start / delete lifecycle;
-- host / carrier abstraction;
-- key / route binding;
-- secret handle pattern;
-- runtime-ready check;
-- cleanup and orphan detection.
+- create / readback / stop / start / delete lifecycle；
+- Host / Carrier abstraction；
+- Key / Route binding；
+- secret handle pattern；
+- runtime-ready check；
+- cleanup 和 orphan detection。
 
-## The Publishing Loop
+## 发布节奏
 
-The portfolio will not wait until everything is perfect.
+这个作品集不会等到完美再发布。
 
-The weekly loop is:
+每周循环是：
 
-1. ship one small project update;
-2. publish one failure case;
-3. update one benchmark or evidence table;
-4. write one short public note;
-5. turn one interview question into a project-backed answer.
+1. 推进一个小项目更新；
+2. 发布一个 failure case；
+3. 更新一个 benchmark 或 evidence table；
+4. 写一篇短技术笔记；
+5. 把一道面试题改造成项目证据支撑的回答。
 
-The point is to show iteration, not just a final polished artifact.
+重点是展示迭代过程，而不是只展示一个最终 polished artifact。
 
-## First Failure Cases to Write
+## 第一批 Failure Case
 
-The first public failure cases should come from real agent teamwork:
+第一批公开 failure case 应该来自真实多 Agent 协作：
 
-- an agent reports from stale context because it did not reread the thread;
-- CI is green but real runtime smoke is not covered;
-- a review stamp is not fresh for the current head;
-- a secret or route appears configured but runtime readback proves it is missing;
-- task ownership is unclear and multiple agents duplicate work.
+- Agent 没重读 thread，基于 stale context 汇报；
+- CI 绿，但 real runtime smoke 没覆盖；
+- review stamp 不是 current head 的 fresh stamp；
+- secret/route 看起来配置了，但 runtime readback 证明缺失；
+- task ownership 不清，多个 Agent 重复劳动。
 
-These cases are valuable because they explain why a Harness exists.
+这些案例的价值在于：它们能解释为什么需要 Harness。
 
-## Next Step
+## 下一步
 
-The next concrete step is to turn this repository into a working evidence base:
+下一步是把这个仓库变成可持续增长的 evidence base：
 
-- add architecture diagrams;
-- add the first benchmark table;
-- add three failure cases;
-- build the smallest runnable harness demo;
-- build the smallest runtime control-plane demo.
+- 加架构图；
+- 加第一张 benchmark 表；
+- 写 3 个 failure case；
+- 做最小可运行 Harness demo；
+- 做最小 Runtime Control Plane demo。
 
-The goal is not just to learn these words. The goal is to make them explainable through real artifacts.
-
+目标不是停留在名词，而是让这些能力通过真实 artifact 讲得清楚。
