@@ -15,6 +15,7 @@
 body {
   color: var(--ink);
   line-height: 1.72;
+  font-size: 16px;
 }
 
 .site-header {
@@ -26,28 +27,31 @@ body {
   font-weight: 700;
 }
 
+.wrapper {
+  max-width: 920px;
+}
+
 .page-content {
-  padding: 0 0 48px;
+  padding: 0 0 52px;
 }
 
-.hero {
-  padding: 48px 0 30px;
-  border-bottom: 1px solid var(--line);
+.home-intro {
+  padding: 42px 0 28px;
 }
 
-.hero h1 {
-  max-width: 860px;
-  font-size: 42px;
-  line-height: 1.16;
+.home-intro h1 {
+  max-width: 820px;
+  font-size: 40px;
+  line-height: 1.18;
   margin: 0 0 16px;
   letter-spacing: 0;
 }
 
-.hero p {
+.home-intro p {
   max-width: 820px;
   font-size: 18px;
   color: var(--muted);
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .actions {
@@ -75,7 +79,8 @@ body {
 }
 
 .section {
-  padding: 34px 0 4px;
+  padding: 28px 0 4px;
+  border-top: 1px solid var(--line);
 }
 
 .section h2 {
@@ -117,6 +122,26 @@ body {
   text-transform: uppercase;
 }
 
+.post-list-clean {
+  list-style: none;
+  margin-left: 0;
+}
+
+.post-list-clean li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-list-clean h3 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.post-list-clean p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
 .evidence {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -129,8 +154,33 @@ body {
   margin-bottom: 0;
 }
 
+.post-shell {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.post-head {
+  padding: 40px 0 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 26px;
+}
+
+.post-title {
+  font-size: 42px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
 .post-content h2 {
-  margin-top: 38px;
+  margin-top: 42px;
+  padding-top: 4px;
 }
 
 .post-content blockquote {
@@ -138,17 +188,46 @@ body {
   color: var(--ink);
 }
 
+.post-content p {
+  margin-bottom: 18px;
+}
+
+.toc {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 22px 0 30px;
+}
+
+.toc h2 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+.toc ul {
+  margin-bottom: 0;
+}
+
+.note {
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  padding: 14px 16px;
+  margin: 20px 0;
+}
+
 table {
   font-size: 14px;
 }
 
 @media (max-width: 640px) {
-  .hero h1 {
+  .home-intro h1,
+  .post-title {
     font-size: 32px;
   }
 
-  .hero p {
+  .home-intro p {
     font-size: 16px;
   }
 }
-

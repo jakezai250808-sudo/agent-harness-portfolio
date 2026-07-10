@@ -2,21 +2,30 @@
 layout: post
 title: "从 Cloud Agent Teams 到 Agent Harness / Infra"
 date: 2026-07-09
+author: Cindy / Jake
 categories: [agent-harness, agent-infra, portfolio]
 ---
 
-今天开始把 Cloud Agent Teams 里的真实工作，整理成一个公开的 Agent Harness / Agent Runtime Infra 作品集。
+今天开始把 Cloud Agent Teams 里的真实工作，整理成一个公开的 Agent Harness / Agent Runtime Infra 作品集。写这篇不是为了做一个项目宣传页，而是为了把一天里的判断、机制和证据沉淀成后续可以反复打磨的技术研究笔记。
 
 核心判断很简单：让 Agent 真正有用，不只是写 prompt 或接一个模型 API。一个真实 Agent 系统需要治理机制、运行时基础设施、证据链、恢复能力，以及证明“事情真的完成了”的方法。
 
-<div class="evidence">
-  <strong>今天的输出：</strong>
+<div class="toc">
+  <h2>Table of Contents</h2>
   <ul>
-    <li>搭建公开 GitHub Pages 作品集；</li>
-    <li>明确 Harness 与 Runtime Infra 的交叉定位；</li>
-    <li>确定两个公开项目：mini-multi-agent-harness 与 agent-sandbox-control-plane；</li>
-    <li>把 failure case / benchmark / weekly release note 放进后续迭代节奏。</li>
+    <li><a href="#问题">问题</a></li>
+    <li><a href="#harness-层">Harness 层</a></li>
+    <li><a href="#runtime-infra-层">Runtime Infra 层</a></li>
+    <li><a href="#为什么这对面试有价值">为什么这对面试有价值</a></li>
+    <li><a href="#接下来公开构建什么">接下来公开构建什么</a></li>
+    <li><a href="#发布节奏">发布节奏</a></li>
+    <li><a href="#第一批-failure-case">第一批 Failure Case</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
+</div>
+
+<div class="note">
+  <strong>今天的输出：</strong>搭建公开 GitHub Pages 作品集；明确 Harness 与 Runtime Infra 的交叉定位；确定两个公开项目；把 failure case / benchmark / weekly release note 放进后续迭代节奏。
 </div>
 
 ## 问题
@@ -155,3 +164,10 @@ Runtime Infra 层解决的是 Agent 如何真实跑起来。
 - 做最小 Runtime Control Plane demo。
 
 目标不是停留在名词，而是让这些能力通过真实 artifact 讲得清楚。
+
+## 参考
+
+- Lilian Weng, [Harness Engineering for Self-Improvement](https://lilianweng.github.io/posts/2026-07-04-harness/).
+- Lilian Weng, [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/).
+- Hugo PaperMod, [Features](https://github.com/adityatelange/hugo-PaperMod/wiki/Features).
+- Jekyll, [Themes](https://jekyllrb.com/docs/themes/).

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<article class="post-shell" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-head">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      Date: {{ page.date | date: "%B %-d, %Y" }}
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 180 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      | Estimated Reading Time: {{ minutes }} min
+      {% if page.author %}| Author: {{ page.author }}{% endif %}
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+</article>
+
