@@ -1,6 +1,6 @@
 # agent-sandbox-control-plane
 
-Goal: build a minimal Agent Runtime Control Plane demo.
+目标：做一个最小 Agent Runtime Control Plane demo。
 
 ## v0.1 Scope
 
@@ -13,5 +13,10 @@ Goal: build a minimal Agent Runtime Control Plane demo.
 
 ## Interview Value
 
-This project supports Agent Infra interviews by showing the resource lifecycle behind a working agent.
+这个项目服务 Agent Infra 面试：它要证明一个 Agent 从创建、可见、运行、停止、恢复、删除到清理的完整资源生命周期。
 
+## Next
+
+- 定义本地 fake provider。
+- 定义 lifecycle journal。
+- 写 create -> visible -> delete -> orphan=0 的最小 smoke。

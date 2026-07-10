@@ -1,8 +1,13 @@
 title: Agent Harness Portfolio
-description: Agent Harness and Agent Runtime Infra notes, projects, and interview evidence.
+description: 从真实多 Agent 工程协作中沉淀 Agent Harness / Agent Runtime Infra 作品集。
 url: "https://jakezai250808-sudo.github.io"
 baseurl: "/agent-harness-portfolio"
 theme: minima
 markdown: kramdown
 plugins:
   - jekyll-feed
+header_pages:
+  - index.md
+  - docs/architecture.md
+  - cases/failure-cases.md
+  - docs/benchmark.md

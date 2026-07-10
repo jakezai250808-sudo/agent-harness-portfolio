@@ -9,6 +9,16 @@ categories: [agent-harness, agent-infra, portfolio]
 
 核心判断很简单：让 Agent 真正有用，不只是写 prompt 或接一个模型 API。一个真实 Agent 系统需要治理机制、运行时基础设施、证据链、恢复能力，以及证明“事情真的完成了”的方法。
 
+<div class="evidence">
+  <strong>今天的输出：</strong>
+  <ul>
+    <li>搭建公开 GitHub Pages 作品集；</li>
+    <li>明确 Harness 与 Runtime Infra 的交叉定位；</li>
+    <li>确定两个公开项目：mini-multi-agent-harness 与 agent-sandbox-control-plane；</li>
+    <li>把 failure case / benchmark / weekly release note 放进后续迭代节奏。</li>
+  </ul>
+</div>
+
 ## 问题
 
 大多数 Agent demo 停在 happy path：
@@ -46,14 +56,14 @@ Runtime Infra 层解决的是 Agent 如何真实跑起来。
 
 我现在采用的拆分方式是：
 
-- Host / Carrier;
-- Key / Route;
-- Record / Bind;
-- Lifecycle;
-- Runtime Ready;
-- readback;
-- rollback;
-- orphan cleanup.
+| 层级 | 关注点 | 面试表达 |
+| --- | --- | --- |
+| Host / Carrier | Agent 跑在哪里，运行时载体如何创建和回收 | 我能把 Agent 从“记录”推进到“真实可运行载体” |
+| Key / Route | 模型 key、route、gateway 绑定 | 我关注 secret 不泄露、路由可读回、成本/权限可控 |
+| Record / Bind | 资源状态如何持久化 | 我不会只依赖进程内状态，而是做 readback 和 journal |
+| Lifecycle | create / stop / start / delete | 我把生命周期拆成可验证步骤 |
+| Runtime Ready | 是否真的能工作 | 我用 visible reply / smoke / readback 证明不是假绿 |
+| Cleanup | 删除和 orphan=0 | 我把清理作为验收，不当作事后补丁 |
 
 对于 create agent 流程，“created” 不应该只是数据库里有一行记录。它应该意味着：Agent 可见，有正确 runtime binding，能使用预期 model route，能 stop/start，能 delete，最后没有 orphan resource。
 
@@ -79,7 +89,7 @@ Runtime Infra 层解决的是 Agent 如何真实跑起来。
 
 ### mini-multi-agent-harness
 
-最小 Agent Harness demo，展示：
+最小 Agent Harness demo，目标是展示：
 
 - planner / executor / reviewer roles；
 - memory preflight；
@@ -91,7 +101,7 @@ Runtime Infra 层解决的是 Agent 如何真实跑起来。
 
 ### agent-sandbox-control-plane
 
-最小 Agent Runtime Control Plane demo，展示：
+最小 Agent Runtime Control Plane demo，目标是展示：
 
 - create / readback / stop / start / delete lifecycle；
 - Host / Carrier abstraction；
@@ -113,6 +123,14 @@ Runtime Infra 层解决的是 Agent 如何真实跑起来。
 5. 把一道面试题改造成项目证据支撑的回答。
 
 重点是展示迭代过程，而不是只展示一个最终 polished artifact。
+
+| 每周产物 | 目的 |
+| --- | --- |
+| 一个项目更新 | 证明项目持续推进 |
+| 一个 failure case | 证明我理解 Agent 失败模式 |
+| 一个 benchmark / evidence 更新 | 证明不是主观描述 |
+| 一篇短文 | 训练公开表达和面试表达 |
+| 一道题的项目答案 | 把面试题转成自己的经历 |
 
 ## 第一批 Failure Case
 
