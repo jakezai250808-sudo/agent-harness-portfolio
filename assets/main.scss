@@ -569,3 +569,57 @@ code {
     gap: 3px;
   }
 }
+
+
+/* Resume-first layout */
+.resume { max-width: 960px; margin: 0 auto; }
+.resume-header { padding: 36px 38px 30px; border: 1px solid var(--line); border-top: 5px solid var(--accent); border-radius: 12px; background: var(--paper); box-shadow: var(--shadow); }
+.resume-kicker { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+.resume-heading { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 36px; align-items: start; margin-top: 14px; }
+.resume-heading h1 { margin: 0 0 12px; font-size: 38px; line-height: 1.18; letter-spacing: -.02em; }
+.resume-summary { max-width: 690px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
+.resume-target { display: flex; flex-direction: column; gap: 5px; padding-left: 18px; border-left: 2px solid var(--line); }
+.resume-target span { margin-bottom: 3px; color: var(--muted); font-size: 12px; }
+.resume-target strong { color: var(--accent-dark); font-size: 14px; }
+.resume-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 650; }
+.resume-section { margin: 34px 0 0; }
+.resume-section > h2, .section-title-row h2 { margin: 0; font-size: 22px; line-height: 1.3; }
+.section-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 14px; }
+.section-title-row > span { color: var(--muted); font-size: 12px; }
+.signal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.signal-grid > div { padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.signal-grid strong { color: var(--accent-dark); font-size: 16px; }
+.signal-grid p { margin: 5px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.resume-project { display: grid; grid-template-columns: 124px minmax(0, 1fr); gap: 24px; margin-top: 14px; padding: 26px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); box-shadow: 0 8px 24px rgba(21,32,43,.04); }
+.project-side { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.project-domain { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.project-main h3 { margin: 0 0 7px; font-size: 20px; line-height: 1.35; }
+.project-brief { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.project-main ul { margin: 0; padding-left: 1.2em; }
+.project-main li { margin: 7px 0; font-size: 14px; line-height: 1.7; }
+.result { margin-top: 14px; padding: 11px 13px; border-left: 3px solid var(--accent); background: var(--paper-soft); color: #42515e; font-size: 13px; }
+.project-links { display: flex; gap: 14px; margin-top: 12px; font-size: 13px; font-weight: 700; }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tech-tags span { padding: 3px 8px; border: 1px solid #dce5eb; border-radius: 999px; background: #f6f9fb; color: #536573; font-size: 11px; font-weight: 650; }
+.skill-rows { overflow: hidden; margin-top: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.skill-rows > div { display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 13px 17px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.skill-rows > div:last-child { border-bottom: 0; }
+.skill-rows strong { color: var(--accent-dark); }
+.skill-rows span { color: var(--muted); }
+.resume-note { margin-top: 32px; padding: 18px 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+
+@media (max-width: 720px) {
+  .site-header { position: static; }
+  .nav { padding: 12px 0; }
+  .nav nav { gap: 8px 14px; font-size: 13px; }
+  .resume-header { padding: 26px 20px 22px; }
+  .resume-heading { grid-template-columns: 1fr; gap: 18px; }
+  .resume-heading h1 { font-size: 29px; }
+  .resume-summary { font-size: 15px; }
+  .resume-target { padding-left: 13px; }
+  .signal-grid { grid-template-columns: 1fr; }
+  .section-title-row { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .resume-project { grid-template-columns: 1fr; gap: 13px; padding: 20px 17px; }
+  .project-side { flex-direction: row; align-items: center; }
+  .skill-rows > div { grid-template-columns: 1fr; gap: 3px; }
+}
