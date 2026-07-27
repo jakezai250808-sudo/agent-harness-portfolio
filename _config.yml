@@ -1,5 +1,5 @@
-title: Agent Harness Portfolio
-description: 从真实多 Agent 工程协作中沉淀 Agent Harness / Agent Runtime Infra 作品集。
+title: AI Engineering Portfolio
+description: AI Infra、Agent Runtime、自动驾驶与车联网平台方向的公开工程作品集。
 url: "https://jakezai250808-sudo.github.io"
 baseurl: "/agent-harness-portfolio"
 theme: minima
@@ -8,6 +8,7 @@ plugins:
   - jekyll-feed
 header_pages:
   - index.md
+  - resume.md
   - docs/architecture.md
   - cases/failure-cases.md
   - docs/benchmark.md
