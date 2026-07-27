@@ -68,16 +68,6 @@ permalink: /resume/
 
 **关键词**：BEV · Sensor Fusion · ROS · PyTorch · DDP · NCCL · Foxglove · RViz
 
-### 城市母婴室地图
-
-从公开与合作数据构建城市级母婴设施地图，覆盖数据整理、POI 融合、地图展示和产品审核流程。
-
-- 将多来源 POI 清洗、去重和结构化，形成可持续更新的数据资产。
-- 完成小程序端的位置检索、地图展示与基础产品闭环。
-- 用真实用户使用情况和维护成本评估项目价值，而不是只交付演示页面。
-
-**关键词**：Data Pipeline · POI · Mini Program · Product Engineering
-
 ## Technical Toolkit
 
 | Area | Technologies |
