@@ -4,83 +4,131 @@ title: Engineering Profile
 permalink: /resume/
 ---
 
-# AI Engineering Profile
+<div class="profile-hero">
+  <span class="eyebrow">PUBLIC ENGINEERING PROFILE</span>
+  <h1>把 AI 模型和 Agent 变成可运行、可治理、可恢复的工程系统</h1>
+  <p class="profile-lead">4+ 年平台与后端工程经验，主线聚焦 <strong>AI Infra / LLM Serving / Agent Runtime</strong>；具备自动驾驶感知部署与车联网数据平台实践。</p>
+  <div class="profile-meta">
+    <span>📍 杭州 / 上海 / Remote</span>
+    <span>🎯 AI Infra · Agent Runtime · 平台后端</span>
+  </div>
+</div>
 
-> 面向真实生产环境的 AI 基础设施、Agent Runtime 与自动驾驶数据系统工程。
+<div class="quick-scan">
+  <div><strong>百卡规模</strong><span>GPU 推理与模型服务</span></div>
+  <div><strong>端到端</strong><span>从部署、网关到可观测性</span></div>
+  <div><strong>生产导向</strong><span>权限、恢复、成本与验证</span></div>
+</div>
 
-**求职方向**：AI Infra / LLM Serving / Agent Runtime & Harness / 自动驾驶平台工程  
-**工作地点**：杭州 / 上海 / Remote
+## 一分钟了解我
 
-这是一份公开、脱敏的工程履历。它只呈现可以讨论的技术问题、系统设计与项目实践，不包含个人联系方式、雇主内部信息或未公开业务数据。
+我的核心能力不是训练某一个模型，而是补齐模型和 Agent 进入真实环境后的工程链路：
 
-## Engineering Focus
+- **让模型服务稳定运行**：处理 GPU 资源、模型兼容、推理入口、流量路由、监控告警与故障定位。
+- **让 Agent 的结果可以相信**：设计任务 ownership、工具权限、运行时隔离、PASS / BLOCK gate、状态回读和失败恢复。
+- **连接算法与业务系统**：以 Java / Spring Cloud 为主干，结合 Python、CUDA、ROS、消息与时序数据系统完成工程交付。
 
-- **AI Infra**：GPU 推理服务、模型部署、资源调度、网关与流量治理、可观测性、稳定性工程。
-- **Agent Runtime**：多 Agent 任务编排、工具与权限边界、运行时隔离、状态回读、失败恢复与证据化交付。
-- **平台后端**：Java / Spring Cloud、Python / FastAPI、微服务、事件驱动、时序数据、多租户与成本治理。
-- **自动驾驶工程**：ROS / ROS2、BEV 感知、模型部署、传感器数据链路与车云协同。
-- **交付方式**：从问题定义、架构设计和实现，到部署、监控、故障定位与持续验证。
+> 当前首选岗位：**AI Infra / LLM Serving / Agent Runtime**。自动驾驶平台、AI 平台后端也是高度匹配方向。
 
-## Selected Engineering Work
+## 代表性工程
 
-### GPU 推理与模型服务平台
+<section class="project-block" id="llm-serving">
+<div class="project-title">
+  <h3>GPU 推理与模型服务平台</h3>
+  <span class="status production">生产实践</span>
+</div>
 
-面向多模型、多 GPU 节点的内部推理场景，参与构建从模型接入到线上运行的服务化链路。
+**问题**：多类模型运行在百卡规模 GPU 集群上，模型架构、CUDA/驱动和依赖组合复杂；“能启动”并不等于能稳定提供服务。
 
-- 使用 vLLM、LiteLLM 与 Nginx 组织兼容 OpenAI API 的推理入口，处理模型路由、健康检查、访问控制与服务降级。
-- 围绕 CUDA、驱动、Transformers 与不同模型架构的兼容矩阵处理部署问题，并把一次性排障沉淀为可复用的镜像与运行约束。
-- 使用 DCGM Exporter、Prometheus 与 Grafana 建立 GPU、请求和服务级可观测性。
-- 关注吞吐、首 Token 延迟、缓存命中、显存利用率与故障恢复，而不只以“模型能够启动”作为交付标准。
+**我负责的工程链路**
 
-**关键词**：LLM Serving · vLLM · LiteLLM · CUDA · Docker · Prometheus · Grafana · GPU Observability
+- 使用 vLLM、LiteLLM 与 Nginx 组织兼容 OpenAI API 的统一入口，覆盖模型路由、健康检查、访问控制和降级。
+- 处理 CUDA、驱动、Transformers 与模型架构之间的兼容矩阵，把排障结论固化为镜像、版本约束和部署规范。
+- 以 DCGM Exporter、Prometheus、Grafana 建立 GPU、请求与服务级指标，支持容量判断与故障定位。
+- 持续关注吞吐、首 Token 延迟、显存利用率、缓存命中和恢复时间，而不是只验证进程是否存活。
 
-### Fleet-to-PR / Agent Engineering Platform
+**工程价值**：把零散模型部署转化为可复用、可观察、可治理的服务能力。
 
-探索让 Coding Agent 从任务接收走到可审查工程产物的完整链路，而不是停留在聊天或代码片段生成。
+<div class="stack-line">vLLM · LiteLLM · CUDA · Docker · Nginx · Prometheus · Grafana</div>
+</section>
 
-- 将任务拆分、ownership、上下文预检、工具调用、执行记录、验证结果与交付证据组织成可追踪流程。
-- 设计 PASS / BLOCK gate，区分代码生成完成、CI 通过、评审通过、契约满足和真实运行验证。
-- 处理 stale context、失败 handoff、重复执行、资源残留与恢复路径等 Agent 长流程问题。
-- 将运行时资源、密钥句柄、路由绑定和生命周期管理抽象为 control plane 能力。
+<section class="project-block" id="agent-runtime">
+<div class="project-title">
+  <h3>Fleet-to-PR / Coding Agent 工程平台</h3>
+  <span class="status prototype">原型与工程验证</span>
+</div>
 
-**关键词**：Agent Harness · Runtime Control Plane · Multi-Agent · Tool Governance · Evidence · Recovery
+**问题**：Coding Agent 会生成代码，但长流程中容易出现上下文过期、重复执行、验证失真、资源残留和“看似完成”。
 
-### Tesla 车辆数据多租户 SaaS（构建中）
+**我设计的关键机制**
 
-面向非开发者车主设计低成本托管服务，兼容 TeslaMate 生态，同时保留共享托管与独享部署两种交付方式。
+- 把任务拆分、ownership、上下文预检、工具调用、执行记录、验证结果和交付证据组织成可追踪流程。
+- 设计 PASS / BLOCK gate，区分“生成完成、CI 通过、评审通过、契约满足、真实运行通过”。
+- 针对 stale context、失败 handoff、重复执行与中断恢复设计显式状态和恢复路径。
+- 将运行时资源、密钥句柄、路由绑定、readback 与生命周期抽象为 control plane 能力。
 
-- 规划 Telemetry、Owner API 与 Fleet API 的多通道接入和迁移路径，降低上游接口变化带来的单点风险。
-- 围绕车辆状态机、流式事件、时序数据、MQTT、只读兼容接口和客户端适配设计服务边界。
-- 以租户隔离、凭证安全、最小权限、审计与数据生命周期作为基础约束，而不是后置补丁。
-- 通过共享基础设施、分层存储和资源配额控制单位用户成本，并保留独享实例以满足更高隐私要求。
-- 将产品验证纳入工程设计：兼容既有客户端、支持自部署迁移，并以留存、续费和支持成本检验是否是一门可持续的 SaaS 生意。
+**工程判断**：Agent Harness 负责约束行为，Runtime Control Plane 负责承载真实运行；二者共同决定 Agent 能否从 demo 走向工程交付。
 
-**关键词**：Multi-Tenant SaaS · TeslaMate · Telemetry · Fleet API · MQTT · Time-Series Data · Privacy
+<div class="evidence-links">
+  <a href="{{ site.baseurl }}/docs/architecture.html">架构笔记 →</a>
+  <a href="{{ site.baseurl }}/cases/failure-cases.html">失败案例 →</a>
+  <a href="{{ site.baseurl }}/docs/benchmark.html">评测维度 →</a>
+</div>
 
-### 自动驾驶感知与部署链路
+<div class="stack-line">Agent Harness · Multi-Agent · Tool Governance · Runtime Isolation · Control Plane</div>
+</section>
 
-围绕多传感器感知模型在真实车辆/场景中的运行，连接算法、推理环境和 ROS 工程链路。
+<section class="project-block" id="autonomous-driving">
+<div class="project-title">
+  <h3>自动驾驶感知与部署链路</h3>
+  <span class="status production">工程实践</span>
+</div>
 
-- 参与 LiDAR、图像与 BEV 融合相关模型的部署和工程集成，覆盖检测、分割与占用等任务。
-- 处理多模型并行、GPU 资源、进程组织、ROS 消息链路与可视化调试。
-- 使用 torchrun / DDP / NCCL 等组件处理训练与多卡运行问题，关注数据、模型和运行环境的一致性。
-- 通过 Foxglove、RViz 与日志指标定位从传感器输入到模型输出之间的系统问题。
+**问题**：多传感器模型进入车辆或场景后，故障可能来自数据、模型、GPU 环境、进程组织或 ROS 消息链路。
 
-**关键词**：BEV · Sensor Fusion · ROS · PyTorch · DDP · NCCL · Foxglove · RViz
+- 参与 LiDAR、图像与 BEV 融合模型的部署和集成，覆盖检测、分割、占用等任务。
+- 处理多模型并行、GPU 资源、ROS 进程与消息链路，并通过 Foxglove、RViz 和日志指标定位问题。
+- 使用 torchrun / DDP / NCCL 处理训练和多卡运行，关注数据、模型与运行环境的一致性。
 
-## Technical Toolkit
+**工程价值**：能够在算法、推理环境和机器人中间件之间定位跨层问题。
 
-| Area | Technologies |
+<div class="stack-line">BEV · Sensor Fusion · ROS / ROS2 · PyTorch · DDP · NCCL · Foxglove</div>
+</section>
+
+<section class="project-block" id="tesla-saas">
+<div class="project-title">
+  <h3>Tesla 车辆数据多租户 SaaS</h3>
+  <span class="status building">构建中</span>
+</div>
+
+**目标**：为非开发者车主提供兼容 TeslaMate 生态的低成本托管服务，并保留共享托管与独享部署。
+
+**已经形成的系统设计**
+
+- Telemetry、Owner API、Fleet API 多通道接入与迁移路径，降低上游接口变化造成的单点风险。
+- 围绕车辆状态机、事件流、时序数据、MQTT、只读兼容接口划分服务边界。
+- 把租户隔离、凭证安全、最小权限、审计和数据生命周期设为基础约束。
+- 以共享基础设施、分层存储和资源配额控制单位成本；以独享实例覆盖高隐私诉求。
+- 在技术之外，用留存、续费、毛利与支持成本验证它是否是一门可持续的 SaaS 生意。
+
+**状态说明**：该项目仍处于构建与验证阶段；这里展示的是已完成的架构判断，不把规划表述成上线成果。
+
+<div class="stack-line">Java · Spring Cloud · Multi-Tenant SaaS · TeslaMate · MQTT · Time-Series Data</div>
+</section>
+
+## 技术能力地图
+
+| 领域 | 能力与技术 |
 |---|---|
-| Backend | Java, Spring Cloud, Python, FastAPI, REST, SSE |
-| AI Serving | vLLM, LiteLLM, PyTorch, CUDA, Transformers |
-| Agent Systems | Agent Harness, Tool Calling, MCP, Runtime Isolation, Control Plane |
-| Platform | Docker, Nginx, GitHub Actions, Linux, Prometheus, Grafana |
-| Autonomous Driving | ROS / ROS2, BEV, DDP, NCCL, Foxglove, RViz |
-| Data | PostgreSQL, SQLite, MQTT, Time-Series Data, Multi-Tenant Design |
+| AI Serving | vLLM、LiteLLM、PyTorch、CUDA、Transformers、模型兼容与性能指标 |
+| Agent Systems | Agent Harness、Tool Calling、MCP、Runtime Isolation、Control Plane |
+| Backend | Java、Spring Cloud、Python、FastAPI、REST、SSE、事件驱动 |
+| Platform | Docker、Nginx、GitHub Actions、Linux、Prometheus、Grafana |
+| Autonomous Driving | ROS / ROS2、BEV、DDP、NCCL、Foxglove、RViz |
+| Data & SaaS | PostgreSQL、SQLite、MQTT、时序数据、多租户、成本治理 |
 
-## What I Optimize For
+## 我的工程取向
 
-我更关心系统能否在真实环境中长期运行：接口变化时能否迁移，Agent 失败时能否恢复，GPU 服务异常时能否定位，多租户数据是否真正隔离，以及成本是否允许产品持续经营。
+我更关心系统能否在真实环境中长期运行：上游变化时能否迁移，Agent 失败时能否恢复，GPU 服务异常时能否定位，多租户数据是否真正隔离，以及成本是否允许产品持续经营。
 
-适合一起讨论的问题包括：推理平台、Agent Runtime、Coding Agent 工程化、自动驾驶平台，以及车辆数据 SaaS。
+这是一份公开脱敏资料，不包含联系方式、雇主内部信息或未公开业务数据。
