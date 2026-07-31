@@ -9,6 +9,7 @@ plugins:
 header_pages:
   - index.md
   - resume.md
+  - ai-infra.md
   - docs/architecture.md
   - cases/failure-cases.md
   - docs/benchmark.md
